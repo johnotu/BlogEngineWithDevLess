@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+
+{% if post %}
+	{% block head %}{{ post.title }}{% endblock %}
+
+	{% block title %}
+		<h1>{{ post.title }}</h1>
+		<hr class="small">
+	{% endblock %}
+	
+	{% block sub_title %}{{ post.author }}{% endblock %}
+	
+	{% block content %}
+		<p>{{ post.text }}</p>
+	{% endblock %}
+{% else %}
+	<h2 class="post-title">Sorry, the requested blog post is not available</h2>
+{% endif %}

@@ -1,0 +1,62 @@
+{% extends "base.html" %}
+
+{% block head %}Admin{% endblock %}
+
+{% block title %}
+	<h1>Admin Panel</h1>
+	<hr class="small">
+{% endblock %}
+
+{% block content %}
+	{% if posts %}
+		<h2>Published blog posts</h2>
+		<br>
+		<div class="table-responsive">
+			<table class="table table-condensed table-bordered">
+				<thead class="active">
+					<tr>
+						<th>Title</th>
+						<th>Published</th>
+						<th></th>
+						<th></th>
+					</tr>
+				</thead>
+				<tbody>
+					{% for post in posts %}
+						<tr>
+							<td>{{ post.title }}</td>
+							<td>{{ post.pubdate }}</td>
+							<td><a href="{{ url_for('show_update_post', id=post.id) }}"><span class="glyphicon glyphicon-edit"></span></a></td>
+							<td><a href="{{ url_for('delete', id=post.id`) }}"><span class="glyphicon glyphicon-trash"></span></a></td>
+						</tr>
+					{% endfor %}
+				</tbody>
+			</table>
+		</div>
+	{% else %}
+		<h3>No blog posts are available yet</h3>
+	{% endif %}
+
+	<hr>
+	<h2>Add new blog post</h2>
+	<br>
+	<form action="{{ url_for('add_post') }}" method=post>
+		<div class="form-group">
+			<label for="title">Title:</label>
+			<input type="text" class="form-control" name="title">
+		</div>
+		<div class="form-group">
+			<label for="sub-title">Sub Title:</label>
+			<input type="text" class="form-control" name="subtitle">
+		</div>
+		<div class="form-group">
+			<label for="author">Author:</label>
+			<input type="text" class="form-control" name="author">
+		</div>
+		<div class="form-group">
+			<label for="text">Text:</label>
+			<textarea rows="30" class="form-control" name="text"></textarea>
+		</div>
+		<button type="submit" class="btn btn-primary">Add Post</button>
+	</form>
+{% endblock %}

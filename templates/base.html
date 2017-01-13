@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>My Blog - {% block head %}{% endblock %}</title>
+	<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+	<link href="{{ url_for('static', filename='style.css') }}" rel="stylesheet">
+</head>
+<body>
+	<header class="intro-header">
+		<div class="container">
+			<div class="row">
+					<div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+						<div class="site-heading">
+							{% block title %}{% endblock %}
+							<span class="subheading">{% block sub_title %}{% endblock %}</span>
+						</div>
+					</div>
+				</div>
+			</div>
+	</header>
+	<div class="container">
+		<div class="row">
+			<div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+				{% block content %}{% endblock %}
+			</div>
+		</div>
+	</div>
+
+	<hr>
+
+	<footer>
+		<div class="container">
+				<div class="row">
+					<div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+						<p class="copyright text-muted">A Simple Blog Engine</p>
+					</div>
+				</div>
+		</div>
+	</footer>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</body>
+</html>
